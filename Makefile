@@ -2,4 +2,4 @@ default: install
 install:
 	bash install.sh
 convert:
-	bash convert_from_wav.sh $1
+	bash convert_from_wav.sh $(args)

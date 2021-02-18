@@ -15,7 +15,7 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 git clone https://forge.chapril.org/tykayn/transcription.git && cd transcription
 ```
 
-* installer vosk via le MakeFile, nécessite python3 pip. faites la commande:
+* installer vosk via le MakeFile, nécessite python3 pip. une fois dans votre dossier de transcription fraîchement cloné, faites la commande:
 ```
 make
 ```
@@ -23,8 +23,11 @@ make
 * le convertir en wav mono (avec audacity par exemple)
 * lancer la transcription du wav mono. Une démo est disponible, extraite de l'émission Libre à vous!
 ```
-make convert input/demo.wav
+make convert file=input/demo.wav
 ```
+n'oubliez pas l'argument `file=`
+
+
 * la sortie texte de la transcription se trouve dans output `output/converted_out_without_nulls.txt` et devrait être affichée à la fin de l'exécution du script.
  
 # Précisions
@@ -45,9 +48,3 @@ make convert input/demo.wav
 * site officiel de [Vosk : installation](https://alphacephei.com/vosk/install) , [modèles de langue](https://alphacephei.com/vosk/models)
 * [site cipherbliss.com](https://www.cipherbliss.com/)
 * [@tykayn](https://mastodon.cipherbliss.com/@tykayn) sur Mastodon.
-
-
-
-
-
-
