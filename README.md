@@ -9,6 +9,11 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 * python3
 * pip
 * git
+* jq
+pour les installer avec aptitude
+```
+sudo apt install jq python3-pip git 
+```
 
 #### cloner ce dépot dans un dossier de travail
 ```bash
