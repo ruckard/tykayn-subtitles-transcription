@@ -39,6 +39,8 @@ make convert input/demo.wav
 - permettre le traitement en masse de plusieurs fichiers de podcast et leur donner un output nommé comme le fichier d'entrée afin de les distinguer.
 
 # liens
+https://cause-commune.fm/podcastfilter/libre-a-vous/
+https://www.librealire.org
 https://listes.april.org/wws/arc/transcriptions/2021-02/msg00016.html
 https://alphacephei.com/vosk/install
 https://www.cipherbliss.com/
