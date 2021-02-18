@@ -1,3 +1,5 @@
-default: bash install.sh
-install: bash install.sh
-convert: bash convert_from_wav.sh
+default: install
+install:
+	bash install.sh
+convert:
+	bash convert_from_wav.sh $1
