@@ -39,9 +39,15 @@ make convert input/demo.wav
 - permettre le traitement en masse de plusieurs fichiers de podcast et leur donner un output nommé comme le fichier d'entrée afin de les distinguer.
 
 # liens
-https://cause-commune.fm/podcastfilter/libre-a-vous/
-https://www.librealire.org
-https://listes.april.org/wws/arc/transcriptions/2021-02/msg00016.html
-https://alphacephei.com/vosk/install
-https://www.cipherbliss.com/
-https://mastodon.cipherbliss.com/@tykayn
+* [podcast libre à vous](https://cause-commune.fm/podcastfilter/libre-a-vous/)
+* [transcriptions libre à lire](https://www.librealire.org)
+* [message parlant de transcription dans la liste de diffusion de l'april](https://listes.april.org/wws/arc/transcriptions/2021-02/msg00016.html)
+* site officiel de [Vosk : installation](https://alphacephei.com/vosk/install) , [modèles de langue](https://alphacephei.com/vosk/models)
+* [site cipherbliss.com](https://www.cipherbliss.com/)
+* [@tykayn](https://mastodon.cipherbliss.com/@tykayn) sur Mastodon.
+
+
+
+
+
+
