@@ -12,7 +12,7 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 
 #### cloner ce dépot dans un dossier de travail
 ```bash
-git clone ssh://gitea@forge.chapril.org:222/tykayn/transcription.git && cd transcription
+git clone https://forge.chapril.org/tykayn/transcription.git && cd transcription
 ```
 
 * installer vosk via le MakeFile, nécessite python3 pip. faites la commande:
