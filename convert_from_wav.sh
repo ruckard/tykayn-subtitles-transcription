@@ -23,4 +23,7 @@ cat output/converted_out_without_nulls.txt
 echo " "
 echo "########### $(date) : lignes transcriptes $COUNT_LINES "
 echo "########### $(date) : conversion faite dans output/converted_out_without_nulls.txt"
+echo "########### $(date) : conversion de la sortie en fichier de sous titres"
+ perl clean.sh output/converted_output.txt > output/output.srt
+
 exit 0

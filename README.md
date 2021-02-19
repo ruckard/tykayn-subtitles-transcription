@@ -6,13 +6,14 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 
 ### installation
 #### Prérequis
-* python3
-* pip
-* git
-* jq
+* python3 (pour l'école serpentard)
+* pip (gestionnaire de paquets python)
+* git (gestion de version)
+* jq (pour le nettoyage de fichier json)
+* ffmpeg (pour la conversion vers wav)
 pour les installer avec aptitude
 ```
-sudo apt install jq python3-pip git 
+sudo apt install jq python3-pip git ffmpeg
 ```
 
 #### cloner ce dépot dans un dossier de travail

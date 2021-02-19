@@ -1,5 +1,6 @@
-/models/*
+/models/fr/*
 !/input/demo.wav
 /input/converted_to_wav/*.wav
 /output/*.txt
 /output/*.csv
+/output/*.srt
