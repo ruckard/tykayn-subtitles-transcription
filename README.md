@@ -21,7 +21,7 @@ sudo apt install jq python3-pip git ffmpeg
 git clone https://forge.chapril.org/tykayn/transcription.git && cd transcription
 ```
 
-* installer vosk via le MakeFile, nécessite python3 pip. une fois dans votre dossier de transcription fraîchement cloné, faites la commande:
+* installer vosk via le MakeFile, vérifiez les prérequis ci-dessus. une fois dans votre dossier de transcription fraîchement cloné, faites la commande:
 ```
 make
 ```
@@ -34,10 +34,11 @@ make convert file=input/demo.wav
 n'oubliez pas l'argument `file=`
 
 
-* la sortie texte de la transcription se trouve dans output `output/converted_out_without_nulls.txt` et devrait être affichée à la fin de l'exécution du script.
+* la sortie texte de la transcription se trouve dans output `output/demo/4_phrases.txt` et devrait être affichée à la fin de l'exécution du script.
+Chaque fichier transcrit a un sous-dossier de son nom dans le dossier output. Ainsi, pour la démo qui se trouve dans `input/demo.wav`, les fichiers de transcription sont dans `output/demo/`
  
 # Précisions
-* vosk est capable de fournir d'autres informations comme la seconde de début et de fin de la phrase détectée. Cela pourrait être utile pour produire des fichiers de sous titre.
+* vosk est capable de fournir d'autres informations comme la seconde de début et de fin de la phrase détectée. Cela pourrait être utile pour produire des fichiers de sous titre. Cela a été ajouté dans un script perl grâce à @r_a@framapiaf.org
 * les locuteurs ne sont pas détectés, toutes les phrases sont dites sans cette précision.
 * si deux personnes parlent rapidement l'une après l'autre, vosk considèrera qu'il s'agit d'une seule phrase.
 * les transcriptions peuvent être faites pour plusieurs langues, il faudra modifier le fichier "conversion_simple_fr.py" si on veut autre chose que du Français.

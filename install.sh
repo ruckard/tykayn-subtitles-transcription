@@ -1,5 +1,5 @@
 #!/bin/bash
-# utilisation: bash convert_from_wav.sh MONFICHIER.wav
+# utilisation: bash transcript.sh MONFICHIER.wav
 # auteur du script: tykayn contact@cipherbliss.com
 green=`tput setaf 2`
 cyan=`tput setaf 4`

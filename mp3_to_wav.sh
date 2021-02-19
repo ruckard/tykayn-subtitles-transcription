@@ -1,5 +1,5 @@
 #!/bin/bash
-# utilisation: bash convert_from_wav.sh MONFICHIER.wav
+# utilisation: bash transcript.sh MONFICHIER.wav
 # auteur du script: tykayn contact@cipherbliss.com
 
 echo "########### conversion des fichiers audio .ogg placés dans le dossier input, vers du wav mono-piste uniquement"
