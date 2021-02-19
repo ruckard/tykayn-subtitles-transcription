@@ -14,6 +14,7 @@ mkdir output/$FILE_NAME
 python3 ./conversion_simple_fr.py "$file" >  $OUT_DIR/0_output.json
 
 
+
 echo " "
 echo "########### $(date) : nettoyer la sortie "
 jq .text  $OUT_DIR/0_output.json > $OUT_DIR/1_converted.txt
@@ -28,9 +29,12 @@ cat $OUT_DIR/4_phrases.txt
 echo " "
 echo "########### $(date) : lignes transcriptes $COUNT_LINES "
 echo "########### $(date) : conversion faite dans output/converted_out_without_nulls.txt"
-echo "########### $(date) : conversion de la sortie en fichier de sous titres"
-perl clean.sh $OUT_DIR/0_output.json > $OUT_DIR/5_phrases.srt
-cat $OUT_DIR/5_phrases.srt
+echo "########### $(date) : conversion de la sortie en pseudo fichier de sous titres"
+perl clean.sh $OUT_DIR/0_output.json > $OUT_DIR/5_phrases_min_sec.txt
+cat $OUT_DIR/5_phrases_min_sec.srt
+
+echo "########### $(date) : conversion de la sortie en fichier de sous titres "
+python3 ./extract_srt.py "$file" >  $OUT_DIR/5_output.srt
 
 ls -l $OUT_DIR
 
