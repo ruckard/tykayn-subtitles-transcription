@@ -1,6 +1,13 @@
 /models/fr/*
+/models/en/*
 !/input/demo.wav
+/input/*.ogg
+/input/*.mp4
+/input/*.mkv
+/input/*.flac
+/input/*.mp3
 /input/converted_to_wav/*.wav
+/input/already_converted/*
 /output/**/*.txt
 /output/**/*.csv
 /output/**/*.json

@@ -47,7 +47,7 @@ sed 's/^ *//; s/ *$//; /^$/d' $OUT_DIR/2_without_nulls_$FILE_NAME.txt > $OUT_DIR
 sed 's/\"//g' $OUT_DIR/3_without_nulls_$FILE_NAME.txt > $OUT_DIR/4_phrases_$FILE_NAME.txt
 echo "########### $(date) : OK "
 echo " "
-COUNT_LINES=$(cat $OUT_DIR/phrases_$FILE_NAME.txt |wc -l)
+COUNT_LINES=$(cat $OUT_DIR/4_phrases_$FILE_NAME.txt |wc -l)
 cat $OUT_DIR/4_phrases_$FILE_NAME.txt
 echo " "
 echo "########### $(date) : lignes transcriptes $COUNT_LINES "
