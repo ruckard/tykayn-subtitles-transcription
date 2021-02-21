@@ -53,5 +53,8 @@ Chaque fichier transcrit a un sous-dossier de son nom dans le dossier output. Ai
 * [transcriptions libre à lire](https://www.librealire.org)
 * [message parlant de transcription dans la liste de diffusion de l'april](https://listes.april.org/wws/arc/transcriptions/2021-02/msg00016.html)
 * site officiel de [Vosk : installation](https://alphacephei.com/vosk/install) , [modèles de langue](https://alphacephei.com/vosk/models)
+* sur Telegram
+    * groupe de [discussion sur vosk](https://t.me/speech_recognition) (veille bibliographique sur la [reconnaissance automatique de la parole](https://fr.wikipedia.org/wiki/Reconnaissance_automatique_de_la_parole))
+    * groupe d'[aide de vosk](https://t.me/speech_recognition_help)
 * [site cipherbliss.com](https://www.cipherbliss.com/)
 * [@tykayn](https://mastodon.cipherbliss.com/@tykayn) sur Mastodon.
