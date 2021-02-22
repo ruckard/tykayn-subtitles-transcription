@@ -34,7 +34,7 @@ FILE_NAME=$(basename $file .wav)
 OUT_DIR=$( echo "output/$FILE_NAME")
 mkdir output/$FILE_NAME
 
-python3 ./conversion_simple_fr.py "$file" >  $OUT_DIR/0_output.json
+python3 ./conversion_simple_fr.py "$file" >  $OUT_DIR/0_output_$FILE_NAME.json
 
 
 
