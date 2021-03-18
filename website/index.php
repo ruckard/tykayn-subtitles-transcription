@@ -1,6 +1,5 @@
 <?php
-	include('src/download.php');
-	include('src/run.php');
+	include( 'website/download.php' );
 	?>
 <html>
 <head>
@@ -14,8 +13,8 @@
 	<h1>Transcription</h1>
 	<section>
 		Donnez l'url de la vidéo à transcrire.
-		<form action='' >
-			<input type='text' >
+		<form action='download.php' method='post' >
+			<input type='text' name='url'>
 			<button type='submit'>Envoyer</button>
 		</form >
 	</section>
