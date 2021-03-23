@@ -34,12 +34,10 @@ include( '_head.php' );
 		  $uniqid = time();
 
 		  # exemple url https://peertube.cipherbliss.com/videos/watch/e6a37508-042e-4d83-8598-5d36b764bb3d
-		  $old = getcwd();
-		  echo $old;
-		  chdir( $old );
 
-//		  exec( $old . '/youtube-dl.sh ' . $uniqid . ' ' . $url, $output, $result );
-		  exec( $old . '/test.sh ' . $uniqid . ' ' . $url, $output, $result );
+
+//		  exec(   './youtube-dl.sh uniqueid_facho  https://peertube.cipherbliss.com/videos/watch/b88a9568-517c-4a49-ab07-75c79323a825', $output, $result );
+//		  exec( '.'.$old . '/test.sh ' . $uniqid . ' ' . $url, $output, $result );
 
 		  echo "<br/> résultat du script. <br>";
 		  var_dump( $result );
@@ -65,6 +63,8 @@ include( '_head.php' );
 	  } else {
 		  echo " <br> pas d'url envoyée. Vérifiez le formulaire. <a href='index.php'>Retour</a>";
 	  }
+
+    exec(   './youtube-dl.sh canadien https://www.youtube.com/watch?v=w97pAEr3svc', $output, $result );
 
 	  ?>
 

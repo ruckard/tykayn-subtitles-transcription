@@ -1,6 +1,8 @@
 #!/bin/bash
 
 mkdir -p ../input/ydl
+rm -rf ../input/ydl/$UNIQID.mp3
+rm -rf ../input/ydl/$UNIQID
 
 UNIQID=$1
 URL=$2
