@@ -33,7 +33,8 @@ if [[ $proceed == o* ]]; then
     echo "C'est parti."
     wget https://alphacephei.com/vosk/models/vosk-model-fr-0.6-linto-2.2.0.zip
     echo -e "${green}########### téléchargement du modèle OK ${reset}"
-    unzip vosk-model-fr-0.6-linto-2.2.0.zip -d models/fr
+    unzip vosk-model-fr-0.6-linto-2.2.0.zip
+    mv vosk-model-fr-0.6-linto-2.2.0 models/fr
     echo -e "${green}########### décompression du modèle OK ${reset}"
     ls -l models/fr
 else
