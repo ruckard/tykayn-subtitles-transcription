@@ -7,10 +7,14 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 ### installation
 #### Prérequis
 * python3 (pour l'école serpentard)
-* pip (gestionnaire de paquets python)
+* pip3 version 19 (gestionnaire de paquets python)
 * git (gestion de version)
+* unzip (décompression de modèle)
 * jq (pour le nettoyage de fichier json)
 * ffmpeg (pour la conversion vers wav)
+* youtube-dl si vous souhaitez utiliser le website
+* 4Go de ram, 2Go serait trop juste pour utiliser le modèle fr par défaut.
+* testé sur Ubuntu 20.04
 pour les installer avec aptitude
 ```
 sudo apt install jq python3-pip git ffmpeg
