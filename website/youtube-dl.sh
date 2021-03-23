@@ -1,9 +1,19 @@
 #!/bin/bash
 
+mkdir -p ../input/ydl
+
 UNIQID=$1
 URL=$2
-OUTPUT="../input/ydl/$UNIQID.flac"
+OUTPUT="../input/ydl/$UNIQID.mp3"
 
-youtube-dl --extract-audio --audio-format flac --audio-quality 0 --output $OUTPUT $URL
+youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --output $OUTPUT $URL
 mkdir ../input/ydl/$UNIQID
-ffmpeg -i "../input/ydl/$UNIQID" -ac 1 "../input/ydl/'.$UNIQID.'.wav"
+ffmpeg -i "../input/ydl/$UNIQID.mp3" -ac 1 "../input/ydl/$UNIQID/$UNIQID.wav"
+
+cd ..
+OUT_DIR="input/ydl/$UNIQID"
+python3 ./conversion_simple_fr.py "input/ydl/$UNIQID/$UNIQID.wav" >  $OUT_DIR/0_output_$FILE_NAME.json
+jq .text  $OUT_DIR/0_output_$FILE_NAME.json > $OUT_DIR/1_converted_$FILE_NAME.txt
+	sed 's/null//g' $OUT_DIR/1_converted_$FILE_NAME.txt > $OUT_DIR/2_without_nulls_$FILE_NAME.txt
+	sed 's/^ *//; s/ *$//; /^$/d' $OUT_DIR/2_without_nulls_$FILE_NAME.txt > $OUT_DIR/3_without_nulls_$FILE_NAME.txt
+	sed 's/\"//g' $OUT_DIR/3_without_nulls_$FILE_NAME.txt > $OUT_DIR/4_phrases_$FILE_NAME.txt
