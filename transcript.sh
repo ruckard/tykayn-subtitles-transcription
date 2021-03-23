@@ -6,6 +6,14 @@ if [ $1 ]; then
     file=$1
 fi
 
+FILE_NAME=$(basename $file .wav)
+
+output_dir="output"
+if [ $2 ]; then
+    output_dir=$2
+fi
+OUT_DIR=$( echo "$output_dir/$FILE_NAME")
+
 echo "########### $(date) : conversion de fichier audio .WAV mono piste uniquement,
  avec Vosk installé par pip3, et un modèle de textes en français."
 echo " "
@@ -40,8 +48,7 @@ else
   exit 1
 fi
 echo " "
-FILE_NAME=$(basename $file .wav)
-OUT_DIR=$( echo "output/$FILE_NAME")
+
 mkdir output/$FILE_NAME
 echo " convertir en sous titre ? $ENABLE_SRT"
 if ($ENABLE_SRT) ; then

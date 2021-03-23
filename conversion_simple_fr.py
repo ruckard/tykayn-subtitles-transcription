@@ -6,8 +6,6 @@ import os
 import wave
 
 SetLogLevel(0)
-print(" ------- conversion simple de", sys.argv[1])
-
 if not os.path.exists("models/fr"):
     print ("Please download the model from https://alphacephei.com/vosk/models and unpack as 'models' in the current folder.")
     exit (1)

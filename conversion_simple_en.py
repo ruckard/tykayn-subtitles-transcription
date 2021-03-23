@@ -6,9 +6,8 @@ import os
 import wave
 
 SetLogLevel(0)
-# print(" ------- conversion simple de", sys.argv[1])
 
-if not os.path.exists("models/fr"):
+if not os.path.exists("models/en"):
     print ("Please download the model from https://alphacephei.com/vosk/models and unpack as 'models' in the current folder.")
     exit (1)
 
@@ -18,7 +17,7 @@ if wf.getnchannels() != 1 or wf.getsampwidth() != 2 or wf.getcomptype() != "NONE
     print ("Audio file must be WAV format mono PCM.")
     exit (1)
 
-model = Model("models/fr")
+model = Model("models/en")
 rec = KaldiRecognizer(model, wf.getframerate())
 
 while True:
