@@ -33,10 +33,10 @@ include( '_head.php' );
 
 		  $uniqid = time();
 
-		  # exemple url https://peertube.cipherbliss.com/videos/watch/e6a37508-042e-4d83-8598-5d36b764bb3d
+//		  # exemple url https://peertube.cipherbliss.com/videos/watch/e6a37508-042e-4d83-8598-5d36b764bb3d
 
 
-//		  exec(   './youtube-dl.sh uniqueid_facho  https://peertube.cipherbliss.com/videos/watch/b88a9568-517c-4a49-ab07-75c79323a825', $output, $result );
+		  exec(   './youtube-dl.sh uniqueid_facho  https://peertube.cipherbliss.com/videos/watch/b88a9568-517c-4a49-ab07-75c79323a825', $output, $result );
 //		  exec( '.'.$old . '/test.sh ' . $uniqid . ' ' . $url, $output, $result );
 
 		  echo "<br/> résultat du script. <br>";

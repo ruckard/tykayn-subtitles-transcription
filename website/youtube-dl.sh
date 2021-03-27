@@ -1,10 +1,11 @@
 #!/bin/bash
 
+UNIQID=$1
+
 mkdir -p ../input/ydl
 rm -rf ../input/ydl/$UNIQID.mp3
 rm -rf ../input/ydl/$UNIQID
 
-UNIQID=$1
 URL=$2
 OUTPUT="../input/ydl/$UNIQID.mp3"
 
