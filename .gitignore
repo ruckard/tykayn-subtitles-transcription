@@ -13,3 +13,4 @@
 /output/**/*.json
 /output/**/*.srt
 .idea
+input/ydl/*
