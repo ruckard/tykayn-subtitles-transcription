@@ -24,6 +24,7 @@ include( '_head.php' );
 		  // sanitize input
 
 		  $url = $_POST[ 'url' ];
+		  $lang = $_POST[ 'lang' ] or 'fr';
 
 		  echo "<br/>récupération de la vidéo à l'url " . $url . " ... <br>";
 
@@ -31,30 +32,75 @@ include( '_head.php' );
 //			print '[Erreur] pas de commande youtube-dl installée sur ce serveur';
 //		} else {
 
-		  $uniqid = date('Y-M-d_').time();
+		  $uniqid = date( 'Y-M-d_' ) . time();
 
 //		  # exemple url https://peertube.cipherbliss.com/videos/watch/e6a37508-042e-4d83-8598-5d36b764bb3d
 
 
 //		  exec(   './youtube-dl.sh uniqueid_facho  https://peertube.cipherbliss.com/videos/watch/b88a9568-517c-4a49-ab07-75c79323a825', $output, $result );
-		  exec( './youtube-dl.sh ' . $uniqid . ' ' . $url, $output, $result );
+		  exec( './youtube-dl.sh ' . $uniqid . ' ' . $url . ' ' . $lang, $output, $result );
+
+		  $phrases_only = file_get_contents( '../input/ydl/' . $uniqid . '/3_without_nulls.txt' );
 
 		  echo "<br/> résultat du script. <br>";
 		  var_dump( $result );
-		  echo "<br/> sortie du script. <br>";
-		  var_dump( $output );
+
 
 		  if ( $result ) {
-			  echo( '<div class="alert is-danger"> problème de script </div>' );
+			  echo '<div class="alert is-danger">  </div>
+					<article class="message is-danger">
+					  <div class="message-header">
+					    <p>Problème de script</p>
+					    <button class="delete" aria-label="delete"></button>
+					  </div>
+					  <div class="message-body">
+					  <h2 class="title is2">
+								  Sortie du script: 
+						</h2><br> <br>
+					    ';
+			  var_dump( $output );
+			  echo ' 
+				  </div>
+				</article>
+				';
 			  include( '_foot.php' );
 		  }
 		  // récup du nom de fichier
-		  echo "<br/>récupération de la vidéo OK. <br>";
+		  echo '<article class="message is-info">
+  <div class="message-body">
+    récupération de la piste audio OK.
+  </div>
+</article>';
 
 
 		  echo "<br/>Conversion de la vidéo " . $uniqid . "... <br>";
 
-		  echo "Vous pouvez télécharger vos fichiers.<br>";
+		  echo '<article class="message is-success">
+  <div class="message-header">
+    <p>Succès</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+  Vous pouvez télécharger vos fichiers.
+  
+    
+  </div>
+</article><br>
+<article class="message is-info">
+  <div class="message-header">
+    <p>Texte avec uniquement les phrases</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    ' . $phrases_only . '
+  </div>
+</article>
+<hr>
+<br>
+TODO: <br>
+    texte avec horodatage minute et secondes avant les phrases. <br>
+    fichier de sous titres au standard srt <br>
+    ';
 
 		  $dir = scandir( '../input/ydl/' . $uniqid );
 		  var_dump( $dir );
@@ -65,7 +111,7 @@ include( '_head.php' );
 		  echo " <br> pas d'url envoyée. Vérifiez le formulaire. <a href='index.php'>Retour</a>";
 	  }
 
-//    exec(   './youtube-dl.sh canadien https://www.youtube.com/watch?v=w97pAEr3svc', $output, $result );
+	  //    exec(   './youtube-dl.sh canadien https://www.youtube.com/watch?v=w97pAEr3svc', $output, $result );
 
 	  ?>
 
