@@ -24,7 +24,7 @@ include( '_head.php' );
 		  // sanitize input
 
 		  $url = $_POST[ 'url' ];
-		  $lang = $_POST[ 'lang' ] or 'fr';
+		  $lang = isset($_POST[ 'lang' ]) ? $_POST['lang'] : 'fr';
 
 		  echo "<br/>récupération de la vidéo à l'url " . $url . " ... <br>";
 
@@ -32,9 +32,16 @@ include( '_head.php' );
 //			print '[Erreur] pas de commande youtube-dl installée sur ce serveur';
 //		} else {
 
-		  $uniqid = date( 'Y-M-d_' ) . time();
+//		  $uniqid = date( 'Y-M-d_' ) . time();
+$uniqid = 'demo_video_tk';
 
 //		  # exemple url https://peertube.cipherbliss.com/videos/watch/e6a37508-042e-4d83-8598-5d36b764bb3d
+
+
+if (file_exists('../input/ydl/'.$uniqid)) {
+    echo "The file $filename exists";
+}else{
+
 
 
 //		  exec(   './youtube-dl.sh uniqueid_facho  https://peertube.cipherbliss.com/videos/watch/b88a9568-517c-4a49-ab07-75c79323a825', $output, $result );
@@ -42,8 +49,11 @@ include( '_head.php' );
 
 		  $phrases_only = file_get_contents( '../input/ydl/' . $uniqid . '/3_without_nulls.txt' );
 
-		  echo "<br/> résultat du script. <br>";
+		  echo "<br/> résultat du script. <br><pre>";
 		  var_dump( $result );
+echo "</pre><br/> output du script. <br><pre>";
+                  var_dump( $output );
+echo "</pre>";
 
 
 		  if ( $result ) {
@@ -75,6 +85,7 @@ include( '_head.php' );
 
 		  echo "<br/>Conversion de la vidéo " . $uniqid . "... <br>";
 
+}
 		  echo '<article class="message is-success">
   <div class="message-header">
     <p>Succès</p>
@@ -82,8 +93,11 @@ include( '_head.php' );
   </div>
   <div class="message-body">
   Vous pouvez télécharger vos fichiers.
-  
-    
+  <ul>
+<li>
+    <a href='../input/ydl/'.$uniqid.'/4_phrases_.txt'>phrases txt</a>
+</li>
+</ul>
   </div>
 </article><br>
 <article class="message is-info">
