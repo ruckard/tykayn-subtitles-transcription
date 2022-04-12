@@ -8,11 +8,15 @@ import json
 import argparse
 from collections import namedtuple
 from pprint import pprint
+import time
 try:
     from tqdm import tqdm
     tqdm_installed = True
 except:
     tqdm_installed = False
+
+start_time = time.time()
+MODEL_LANG="fr"
 
 class SubPart:
 
@@ -92,7 +96,7 @@ def gen_subparts(input_file, model_dir, verbose=False, partlen=4, progress=False
         else:
             pass
             #print(rec.PartialResult())
-    #pprint(rec.PartialResult())
+#     pprint(rec.PartialResult())
     if progress:
         pbar.close()
     r = json.loads(rec.PartialResult())
@@ -115,18 +119,20 @@ def create_parser():
 def main():
     args = create_parser().parse_args()
     if tqdm_installed:
-        it = enumerate(gen_subparts(args.input, "models/fr", args.verbose, args.interval, args.progress))
+        it = enumerate(gen_subparts(args.input, "models/"+MODEL_LANG, args.verbose, args.interval, args.progress))
     else:
-        it = enumerate(gen_subparts(args.input, "models/fr", args.verbose, args.interval, False))
+        it = enumerate(gen_subparts(args.input, "models/"+MODEL_LANG, args.verbose, args.interval, False))
     for i,subpart in it:
         n = i+1
         args.output.write(f"""{n}
 {subpart}
 
 """
-)
+        )
 
 
 
 if __name__ == "__main__":
     main()
+    print ("script extract_srt done in : ")
+    print (time.time() - start_time), "seconds"

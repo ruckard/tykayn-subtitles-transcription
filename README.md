@@ -15,6 +15,7 @@ configuration pour transcrire des fichiers audio wav avec Vosk
 * youtube-dl si vous souhaitez utiliser le website
 * 4Go de ram, 2Go serait trop juste pour utiliser le modèle fr par défaut.
 * testé sur Ubuntu 20.04
+
 pour les installer avec aptitude
 ```
 sudo apt install jq python3-pip git ffmpeg
@@ -26,13 +27,16 @@ git clone https://forge.chapril.org/tykayn/transcription.git && cd transcription
 ```
 
 * installer vosk via le MakeFile, vérifiez les prérequis ci-dessus. une fois dans votre dossier de transcription fraîchement cloné, faites la commande:
-```
+```bash
 make
 ```
 * mettre un fichier audio dans le dossier "input"
-* le convertir en wav mono (avec audacity par exemple)
-* lancer la transcription du wav mono. Une démo est disponible, extraite de l'émission Libre à vous!
+* le convertir en wav mono 
+```bash
+  make wav
 ```
+* lancer la transcription du wav mono. Une démo est disponible, extraite de l'émission Libre à vous!
+```bash
 make convert file=input/demo.wav
 ```
 n'oubliez pas l'argument `file=`

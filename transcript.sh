@@ -1,10 +1,38 @@
 #!/bin/bash
 # utilisation: bash transcript.sh MONFICHIER.wav
 # auteur du script: tykayn contact@cipherbliss.com
+#   ```bash
+#     bash transcript.sh myfile fr 1
+#   ```
+echo " Transcript of a file - [file relative path \"input/aside/demo.wav\"] [lang en or fr] [enable srt conversion 1 or 0]"
+# ----------------- Default parameters -----------------
+#ENABLE_SRT=false
+ENABLE_SRT=true
+# disponibles: "fr" ou "en", trouvez d'autres modèles prédéfinis https://alphacephei.com/vosk/models
+FOLDER_MODEL="fr"
+#FOLDER_MODEL="en"
+DEFAULT_FILE_TO_TRANSCRIPT="input/aside/demo.wav"
+STARTTIME=$(date +%s)
 
+# ----------------- prise en compte des arguments rentrés par l'utilisateur
 if [ $1 ]; then
     file=$1
+    else
+      echo "utilisation du fichier de démo"
+      file=$DEFAULT_FILE_TO_TRANSCRIPT
 fi
+if [ $2 ]; then
+    lang_to_search=$2
+    else
+      lang_to_search=$FOLDER_MODEL
+fi
+if [ $3 ]; then
+    ENABLE_SRT=$3
+    else
+      ENABLE_SRT=$ENABLE_SRT
+fi
+
+echo " [file name]: $file, [lang]: $lang_to_search, [enable srt conversion]: $ENABLE_SRT."
 
 FILE_NAME=$(basename $file .wav)
 
@@ -19,23 +47,19 @@ echo "########### $(date) : conversion de fichier audio .WAV mono piste uniqueme
 echo " "
 echo "########### $(date) : fichier : $file : $1"
 
-#FOLDER_MODEL="fr" # disponibles: "fr" ou "en"
-ENABLE_SRT=false
-#ENABLE_SRT=true
-FOLDER_MODEL="fr"
 
-# existence du modèle demandé
-if [ -d "models/$FOLDER_MODEL" ]; then
-    echo "models/$FOLDER_MODEL le modèle est bien présent."
+# ----------------- recherche de l'existence du modèle de langue demandé -----------------
+if [ -d "models/$lang_to_search" ]; then
+    echo "models/$lang_to_search le modèle est bien présent."
 else
   pwd
   ls -l models
   echo " "
-  echo "########### $(date) : [ERREUR] le modèle de données dans models/$FOLDER_MODEL n'existe pas, vérifiez son installation :C peut être avez vous oublié de faire une commande 'make'"
+  echo "########### $(date) : [ERREUR] le modèle de données dans models/$lang_to_search n'existe pas, vérifiez son installation :C peut être avez vous oublié de faire une commande 'make'"
 
   exit 1
 fi
-# existence du fichier demandé
+# ----------------- existence du fichier demandé -----------------
 if [ -f "$file" ]; then
     echo "$file exists."
 else
@@ -49,11 +73,16 @@ else
 fi
 echo " "
 
-mkdir output/$FILE_NAME
+mkdir output/$FILE_NAME -p
 echo " convertir en sous titre ? $ENABLE_SRT"
 if ($ENABLE_SRT) ; then
 	echo "########### $(date) : conversion de la sortie en fichier de sous titres .srt"
-	python3 ./extract_srt.py "$file" >  $OUT_DIR/5_output_$FILE_NAME.srt
+	python3 ./extract_srt.py "$file" >  $OUT_DIR/6_output_$FILE_NAME.srt
+	cat $OUT_DIR/6_output_$FILE_NAME.srt
+	COUNT_LINES=$(cat $OUT_DIR/6_output_$FILE_NAME.srt |wc -l)
+	echo " "
+	echo "-------------- DONE ------------"
+	echo " $COUNT_LINES lines in $OUT_DIR/6_phrases_min_sec.srt"
 else
     echo "########### $(date) : conversion de la sortie en divers fichiers marquant les temps et sans marquage"
 	python3 ./conversion_simple_fr.py "$file" >  $OUT_DIR/0_output_$FILE_NAME.json
@@ -69,17 +98,17 @@ else
 	echo " "
 	COUNT_LINES=$(cat $OUT_DIR/4_phrases_$FILE_NAME.txt |wc -l)
 	cat $OUT_DIR/4_phrases_$FILE_NAME.txt
+	echo " $COUNT_LINES lines in $OUT_DIR/4_phrases_$FILE_NAME.txt"
 	echo " "
 	echo "########### $(date) : lignes transcriptes $COUNT_LINES "
 	echo "########### $(date) : conversion faite dans output/converted_out_without_nulls.txt"
 	echo "########### $(date) : conversion de la sortie en pseudo fichier de sous titres"
 	perl clean.sh $OUT_DIR/0_output_$FILE_NAME.json > $OUT_DIR/5_phrases_min_sec_$FILE_NAME.txt
-	cat $OUT_DIR/5_phrases_min_sec.srt
+
 
 fi
+#ls -l $OUT_DIR
 
-
-ls -l $OUT_DIR
-
-echo "########### $(date) : conversion faite "
+echo "########### $(STARTTIME) -- $(date) : conversion faite "
+echo "########### en $SECONDS seconds"
 exit 0
