@@ -20,8 +20,8 @@ echo " "
 echo "########### $(date) : fichier : $file : $1"
 
 #FOLDER_MODEL="fr" # disponibles: "fr" ou "en"
-#ENABLE_SRT=false
-ENABLE_SRT=true
+ENABLE_SRT=false
+#ENABLE_SRT=true
 FOLDER_MODEL="fr"
 
 # existence du modèle demandé
