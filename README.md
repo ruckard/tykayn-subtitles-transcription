@@ -2,7 +2,7 @@
 
 configuration pour transcrire des fichiers audio wav avec Vosk
 
-## mode d'emploi
+## Mode d'emploi
 
 ### installation
 #### Prérequis
@@ -21,7 +21,7 @@ pour les installer avec aptitude
 sudo apt install jq python3-pip git ffmpeg
 ```
 
-#### cloner ce dépot dans un dossier de travail
+#### Cloner ce dépot dans un dossier de travail
 ```bash
 git clone https://forge.chapril.org/tykayn/transcription.git && cd transcription
 ```
@@ -51,10 +51,35 @@ Chaque fichier transcrit a un sous-dossier de son nom dans le dossier output. Ai
 * si deux personnes parlent rapidement l'une après l'autre, vosk considèrera qu'il s'agit d'une seule phrase.
 * les transcriptions peuvent être faites pour plusieurs langues, il faudra modifier le fichier "conversion_simple_fr.py" si on veut autre chose que du Français.
 
-# évolutions possibles
+# Évolutions possibles
 - convertir un fichier mp3 vers WAV mono avec ffmpeg.
 - nettoyer l'écho et normaliser le fichier audio.
 - permettre le traitement en masse de plusieurs fichiers de podcast et leur donner un output nommé comme le fichier d'entrée afin de les distinguer.
+# Modèles de voix
+Common voice: 22Go
+https://commonvoice.mozilla.org/fr/datasets
+
+Other models
+Other places where you can check for models which might be compatible:
+
+https://kaldi-asr.org/models.html - variety of models from Kaldi - librispeech, aspire, chinese models
+https://github.com/daanzu/kaldi-active-grammar/blob/master/docs/models.md - Big dictation models for English
+https://github.com/uhh-lt/vosk-model-tuda-de - German models
+https://github.com/german-asr/kaldi-german - Another German project
+https://zamia-speech.org/asr/ - German and English model from Zamia
+https://github.com/pguyot/zamia-speech/releases - French models for Zamia
+https://github.com/opensource-spraakherkenning-nl/Kaldi_NL - Dutch model
+https://montreal-forced-aligner.readthedocs.io/en/latest/pretrained_models.html (GMM models, not compatible but might be still useful)
+https://github.com/goodatlas/zeroth - Korean Kaldi (just a recipe and data to train)
+https://github.com/undertheseanlp/automatic_speech_recognition - Vietnamese Kaldi project
+https://doc.linto.ai/#/services/linstt - LINTO project with French and English models
+https://community.rhasspy.org/ - Rhasspy (some Kaldi models for Czech, probably even more)
+https://github.com/feddybear/flipside_ph - Filipino model project by Federico Ang
+https://github.com/alumae/kiirkirjutaja - Estonian Speech Recognition project with Vosk models
+https://github.com/falabrasil/kaldi-br - Portuguese models from FalaBrasil project
+https://github.com/egorsmkv/speech-recognition-uk - Ukrainian ASR project with Vosk models
+https://github.com/Appen/UHV-OTS-Speech - repository from Appen for Scalable Data Annotation Pipeline for High-Quality Large Speech Datasets Development
+https://github.com/vistec-AI/commonvoice-th - Thai models trained on CommonVoice
 
 # liens
 * [podcast libre à vous](https://cause-commune.fm/podcastfilter/libre-a-vous/)

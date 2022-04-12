@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# TODO tqdm
+# prend un fichier audio et imprime des sous titres au format srt
+
 from vosk import Model, KaldiRecognizer, SetLogLevel
 import sys
 import os
@@ -41,7 +42,7 @@ class SubPart:
 """[1:-1]
 
 
-def gen_subparts(input_file, model_dir, verbose=False, partlen=4, progress=False):
+def gen_subparts(input_file, model_dir, verbose=False, partlen=4, progress=True):
     SetLogLevel(0 if verbose else -1)
 
     model = Model(model_dir)
@@ -134,5 +135,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print ("script extract_srt done in : ")
-    print (time.time() - start_time), "seconds"

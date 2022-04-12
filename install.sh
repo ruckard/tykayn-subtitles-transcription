@@ -29,14 +29,20 @@ echo " "
     mkdir -p models/fr
 echo -e "${green}########### Procéder au téléchargement du modèle Français (1.6go) pour transcrire les textes ?${reset} (écrivez o pour oui et faites entrée pour valider) ${reset}"
 read proceed
+
+# les autres modèles sont ici https://alphacephei.com/vosk/models
 if [[ $proceed == o* ]]; then
     echo "C'est parti."
-    wget https://alphacephei.com/vosk/models/vosk-model-fr-0.6-linto-2.2.0.zip
-    echo -e "${green}########### téléchargement du modèle OK ${reset}"
-    unzip vosk-model-fr-0.6-linto-2.2.0.zip
-    mv vosk-model-fr-0.6-linto-2.2.0 models/fr
-    echo -e "${green}########### décompression du modèle OK ${reset}"
-    ls -l models/fr
+    if [ ! -f "vosk-model-fr-0.6-linto-2.2.0.zip" ]; then
+      wget https://alphacephei.com/vosk/models/vosk-model-fr-0.6-linto-2.2.0.zip
+      echo -e "${green}########### téléchargement du modèle OK ${reset}"
+      unzip vosk-model-fr-0.6-linto-2.2.0.zip
+      mv vosk-model-fr-0.6-linto-2.2.0 models/fr
+      echo -e "${green}########### décompression du modèle en Français OK ${reset}"
+      ls -l models/fr
+    else
+      echo "fichier zip vosk-model-fr-0.6-linto-2.2.0.zip déjà présent"
+    fi
 else
     echo -e "${green}########### vous n'avez pas souhaité télécharger le modèle ${reset}"
     echo -e "${green}########### fin de l'installation sans télécharger de modèle de langue ${reset}"
